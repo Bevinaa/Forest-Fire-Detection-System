@@ -118,12 +118,3 @@ To run this project, ensure you have the following installed:
 
 ---
 
-
-
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Bevinaa/forest-fire-detection-system.git
-cd forest-fire-detection-system
-
