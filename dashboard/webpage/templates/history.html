@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensor History</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+    }
+
+    .app-bar {
+      background: linear-gradient(45deg, #ff4b2b, #ff416c);
+      padding: 25px;
+      text-align: left;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 120px;
+    }
+
+    th, td {
+      border: 1px solid #ff416c;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #ff416c;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffd698;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-bar">FOREST FIRE DATA HISTORY</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Temperature (°C)</th>
+        <th>Humidity (%)</th>
+        <th>Smoke Level</th>
+        <th>Fire Prediction</th>
+      </tr>
+    </thead>
+    <tbody id="historyTable"></tbody>
+  </table>
+
+  <script>
+    async function loadHistory() {
+      try {
+        const response = await fetch('/api/history');
+        const data = await response.json();
+
+        const tableBody = document.getElementById("historyTable");
+        tableBody.innerHTML = "";
+
+        data.forEach(record => {
+          const firePrediction = record.fire_predicted === 1 ? "FIRE DETECTED 🔥" : "No Fire";
+          const row = `
+            <tr>
+              <td>${record.timestamp}</td>
+              <td>${record.temperature}</td>
+              <td>${record.humidity}</td>
+              <td>${record.smoke}</td>
+              <td>${firePrediction}</td>
+            </tr>
+          `;
+          tableBody.innerHTML += row;
+        });
+      } catch (error) {
+        console.error('Error loading history:', error);
+      }
+    }
+
+    // Load history when page loads
+    window.onload = loadHistory;
+  </script>
+
+</body>
+</html>
