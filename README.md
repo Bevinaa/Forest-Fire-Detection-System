@@ -99,7 +99,7 @@ To run this project, ensure you have the following installed:
 
 | Demo of the Project |
 |-----------------------------------|
-| |
+| https://github.com/Bevinaa/Forest-Fire-Detection-System/demo.mp4 |
 
 ---
 
@@ -117,4 +117,10 @@ To run this project, ensure you have the following installed:
 |![image](https://github.com/user-attachments/assets/17752d7c-3bd6-483e-bfc8-627900d74fee) |
 
 ---
+## Contact
 
+**Bevina R.**  
+Email: bevina2110@gmail.com  
+GitHub: [Bevinaa](https://github.com/Bevinaa)
+
+---
